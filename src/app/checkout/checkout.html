@@ -1,0 +1,66 @@
+<div class="checkout-page">
+  <h2>Checkout</h2>
+
+  <div class="checkout-content">
+    <div class="order-summary">
+      <h3>Order Summary</h3>
+      @for (order of orders; track order.orderId) {
+        <div class="order-item">
+          <span class="item-name">{{ order.productName }}</span>
+          <span>Qty: {{ order.quantity }}</span>
+          <span class="item-price">${{ order.totalPrice }}</span>
+        </div>
+      }
+      <div class="summary-total">
+        <span>Total</span>
+        <span>${{ totalAmount }}</span>
+      </div>
+    </div>
+
+    <div class="payment-form">
+      <h3>Payment Details</h3>
+
+      @if (message) {
+        <div class="message error">{{ message }}</div>
+      }
+
+      <div class="form-group">
+        <label>Card Number</label>
+        <input type="text" [(ngModel)]="cardNumber" placeholder="4242 4242 4242 4242" maxlength="19" />
+      </div>
+
+      <div class="form-group">
+        <label>Cardholder Name</label>
+        <input type="text" [(ngModel)]="cardName" placeholder="John Doe" />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Expiry Date</label>
+          <input type="text" [(ngModel)]="expiry" placeholder="MM/YY" maxlength="5" />
+        </div>
+        <div class="form-group">
+          <label>CVV</label>
+          <input type="text" [(ngModel)]="cvv" placeholder="123" maxlength="4" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Payment Method</label>
+        <select [(ngModel)]="paymentMethod">
+          <option value="credit_card">Credit Card</option>
+          <option value="debit_card">Debit Card</option>
+          <option value="paypal">PayPal</option>
+        </select>
+      </div>
+
+      <button class="btn-pay" (click)="pay()" [disabled]="processing">
+        @if (processing) {
+          Processing...
+        } @else {
+          Pay ${{ totalAmount }}
+        }
+      </button>
+    </div>
+  </div>
+</div>

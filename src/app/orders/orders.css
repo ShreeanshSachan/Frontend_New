@@ -1,0 +1,140 @@
+.orders-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  min-height: calc(100vh - 60px);
+  background: #f8f9fa;
+}
+
+.orders-page h2 {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 32px;
+}
+
+.message {
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.empty-orders {
+  text-align: center;
+  padding: 80px 0;
+}
+
+.empty-orders p {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 18px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.btn-shop {
+  display: inline-block;
+  background: #1a1a2e;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 600;
+}
+
+.orders-table {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.orders-header {
+  display: grid;
+  grid-template-columns: 100px 1fr 80px 100px 120px;
+  gap: 12px;
+  padding: 0 0 12px;
+  border-bottom: 2px solid #f0f0f0;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.order-row {
+  display: grid;
+  grid-template-columns: 100px 1fr 80px 100px 120px;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f0f0;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+.order-row:last-child {
+  border-bottom: none;
+}
+
+.order-id {
+  font-weight: 700;
+  color: #e94560;
+}
+
+.product-name {
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.order-total {
+  font-weight: 700;
+}
+
+.order-status {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.status-created {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.status-confirmed {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.status-shipped {
+  background: #e0e7ff;
+  color: #4f46e5;
+}
+
+.status-delivered {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.status-cancelled {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+@media (max-width: 768px) {
+  .orders-header,
+  .order-row {
+    grid-template-columns: 80px 1fr 60px 80px 100px;
+    font-size: 12px;
+  }
+}

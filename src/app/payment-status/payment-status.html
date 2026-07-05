@@ -1,0 +1,19 @@
+<div class="status-page">
+  <div class="status-card">
+    @if (success) {
+      <div class="icon success-icon">&#10003;</div>
+      <h1>Payment Successful</h1>
+      <p class="amount">${{ totalAmount }}</p>
+      <p class="txn">Transaction ID: <strong>{{ transactionId }}</strong></p>
+      <p class="desc">Your order has been placed and confirmed.</p>
+      <a routerLink="/orders" class="btn-primary">View Orders</a>
+    } @else {
+      <div class="icon failure-icon">&#10007;</div>
+      <h1>Payment Failed</h1>
+      <p class="amount">${{ totalAmount }}</p>
+      <p class="desc">Something went wrong processing your payment.</p>
+      <p class="hint">Please check your card details and try again.</p>
+      <a routerLink="/cart" class="btn-primary">Back to Cart</a>
+    }
+  </div>
+</div>

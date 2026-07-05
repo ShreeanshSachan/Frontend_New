@@ -1,0 +1,35 @@
+<div class="home-page">
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Premium Sneakers</h1>
+      <p>Discover the latest collection of iconic footwear</p>
+    </div>
+  </section>
+
+  <section class="products-section">
+    <h2>Featured Products</h2>
+
+    @if (message) {
+      <div class="toast">{{ message }}</div>
+    }
+
+    <div class="product-grid">
+      @for (product of products; track product.id) {
+        <div class="product-card">
+          <div class="product-image">
+            <img [src]="product.imageUrl || 'https://via.placeholder.com/300x200?text=Sneaker'" [alt]="product.name" />
+          </div>
+          <div class="product-info">
+            <span class="product-brand">{{ product.brand }}</span>
+            <h3>{{ product.name }}</h3>
+            <p class="product-description">{{ product.description }}</p>
+            <div class="product-footer">
+              <span class="product-price">${{ product.price }}</span>
+              <button class="btn-add" (click)="addToCart(product.id)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+</div>

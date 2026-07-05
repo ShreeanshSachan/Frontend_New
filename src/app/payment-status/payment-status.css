@@ -1,0 +1,89 @@
+.status-page {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  padding: 40px 20px;
+}
+
+.status-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 60px 48px;
+  text-align: center;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+.icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin: 0 auto 24px;
+  line-height: 1;
+}
+
+.success-icon {
+  background: #d1fae5;
+  color: #16a34a;
+}
+
+.failure-icon {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.status-card h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 12px;
+}
+
+.amount {
+  font-size: 36px;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin: 0 0 8px;
+}
+
+.txn {
+  font-size: 13px;
+  color: #888;
+  margin: 0 0 8px;
+}
+
+.desc {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 4px;
+}
+
+.hint {
+  font-size: 13px;
+  color: #999;
+  margin: 0 0 28px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: #1a1a2e;
+  color: #fff;
+  padding: 14px 36px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+  margin-top: 24px;
+}
+
+.btn-primary:hover {
+  background: #e94560;
+}

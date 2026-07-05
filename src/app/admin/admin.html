@@ -1,0 +1,120 @@
+<div class="admin-page">
+  <h2>Admin Dashboard</h2>
+
+  <div class="admin-tabs">
+    <button [class.active]="activeTab === 'products'" (click)="activeTab = 'products'">Products</button>
+    <button [class.active]="activeTab === 'orders'" (click)="activeTab = 'orders'">Orders</button>
+    <button [class.active]="activeTab === 'users'" (click)="activeTab = 'users'">Users</button>
+  </div>
+
+  @if (activeTab === 'products') {
+    <div class="admin-section">
+      <div class="section-header">
+        <h3>Manage Products</h3>
+        <button class="btn-add" (click)="showAddForm = !showAddForm">
+          {{ showAddForm ? 'Cancel' : '+ Add Product' }}
+        </button>
+      </div>
+
+      @if (productMsg) {
+        <div class="msg">{{ productMsg }}</div>
+      }
+
+      @if (showAddForm) {
+        <div class="add-form">
+          <input [(ngModel)]="newProduct.name" name="name" placeholder="Product name" />
+          <input [(ngModel)]="newProduct.brand" name="brand" placeholder="Brand" />
+          <input [(ngModel)]="newProduct.category" name="category" placeholder="Category" />
+          <input [(ngModel)]="newProduct.price" name="price" type="number" step="0.01" placeholder="Price" />
+          <input [(ngModel)]="newProduct.imageUrl" name="imageUrl" placeholder="Image URL" />
+          <textarea [(ngModel)]="newProduct.description" name="description" placeholder="Description"></textarea>
+          <button class="btn-save" (click)="addProduct()">Save Product</button>
+        </div>
+      }
+
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Brand</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Action</th>
+        </tr>
+        @for (p of products; track p.id) {
+          <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.name }}</td>
+            <td>{{ p.brand }}</td>
+            <td>{{ p.category }}</td>
+            <td>${{ p.price }}</td>
+            <td><button class="btn-delete" (click)="deleteProduct(p.id)">Delete</button></td>
+          </tr>
+        }
+      </table>
+    </div>
+  }
+
+  @if (activeTab === 'orders') {
+    <div class="admin-section">
+      <h3>All Orders</h3>
+      @if (orderMsg) {
+        <div class="msg">{{ orderMsg }}</div>
+      }
+      <table>
+        <tr>
+          <th>Order ID</th>
+          <th>User</th>
+          <th>Product</th>
+          <th>Qty</th>
+          <th>Total</th>
+          <th>Status</th>
+          <th>Update</th>
+        </tr>
+        @for (o of orders; track o.orderId) {
+          <tr>
+            <td>#{{ o.orderId }}</td>
+            <td>{{ o.userName }}</td>
+            <td>{{ o.productName }}</td>
+            <td>{{ o.quantity }}</td>
+            <td>${{ o.totalPrice }}</td>
+            <td><span class="status-badge" [style.background]="o.status === 'DELIVERED' ? '#d1fae5' : o.status === 'CANCELLED' ? '#fee2e2' : '#fef3c7'" [style.color]="o.status === 'DELIVERED' ? '#059669' : o.status === 'CANCELLED' ? '#dc2626' : '#d97706'">{{ o.status }}</span></td>
+            <td>
+              <select (change)="updateStatus(o.orderId, $any($event.target).value)">
+                <option value="">Change</option>
+                @for (s of statusOptions; track s) {
+                  <option [value]="s" [selected]="s === o.status">{{ s }}</option>
+                }
+              </select>
+            </td>
+          </tr>
+        }
+      </table>
+    </div>
+  }
+
+  @if (activeTab === 'users') {
+    <div class="admin-section">
+      <h3>All Users</h3>
+      @if (userMsg) {
+        <div class="msg">{{ userMsg }}</div>
+      }
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+        </tr>
+        @for (u of users; track u.id) {
+          <tr>
+            <td>{{ u.id }}</td>
+            <td>{{ u.name }}</td>
+            <td>{{ u.email }}</td>
+            <td><span class="role-badge" [class.admin-role]="u.role === 'ADMIN'">{{ u.role }}</span></td>
+          </tr>
+        }
+      </table>
+    </div>
+  }
+</div>
